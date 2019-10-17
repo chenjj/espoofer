@@ -4,10 +4,10 @@ from common.mailsender import mailsender
 import testcases
 
 config = {
-	"attacker_site": b"owlhut.com",
-	"legitimate_site": b"b.cdnsec.tk",
-	"victim_address": b"admin@jianjunchen.com",
-	"case_id": b"case_a3",
+	"attacker_site": b"", # attack.com
+	"legitimate_site": b"", # legitimate.com
+	"victim_address": b"", # victim@victim.com
+	"case_id": b"", # case_a3
 }
 
 def fixup_test_case_data(t):
