@@ -32,7 +32,7 @@ def query_mx_record(domain):
 		import traceback
 		traceback.print_exc()
 
-def get_mail_server_from_email(e):
+def get_mail_server_from_email_address(e):
 	domain = e.split(b"@")[1]
 	return query_mx_record(domain.decode("utf-8"))
 
