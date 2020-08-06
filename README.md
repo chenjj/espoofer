@@ -1,21 +1,23 @@
 # espoofer
 
-*espoofer* is a open-source testing tool to bypass SPF, DKIM and DMARC authentication in email systems. It helps mail server administrators and penetration testers to check whether the target email server and client are vulnerable to email spoofing attacks or can be absued to send spoofing emails.
+*espoofer* is an open-source testing tool to bypass SPF, DKIM, and DMARC authentication in email systems. It helps mail server administrators and penetration testers to check whether the target email server and client are vulnerable to email spoofing attacks or can be abused to send spoofing emails.
 
 <!-- ![Gmail spoofing demo](images/gmail-spoofing-demo.png "espoofer demo" )
- -->
+ -->
 <p align="center">
-<img src="images/gmail-spoofing-demo.png" height="300"><br>
-Figure 1. A case of our spoofing attacks on Gmail (Fixed, <a href="https://youtu.be/xuKZpT0rsd0">Demo video</a>)
+<kbd>
+<img src="images/gmail-spoofing-demo.png" height="300">
+</kbd>
+<br>Figure 1. A case of our spoofing attacks on Gmail (Fixed, <a href="https://youtu.be/xuKZpT0rsd0">Demo video</a>)
 </p>
 
 ## Why build this tool?
 
-Email spoofing is a big threat to both individuals and orgnizations ([Twitter scam](https://twitter.com/TwitterSupport/status/1283591846464233474), [Yahoo breach](https://arstechnica.com/tech-policy/2017/03/fbi-hints-that-hack-of-semi-privileged-yahoo-employee-led-to-massive-breach/), [John podesta](https://www.cbsnews.com/news/the-phishing-email-that-hacked-the-account-of-john-podesta/)). To address this problem, mordern email services and websites employ authentication protcols -- SPF, DKIM and DMARC -- to prevent email forgery. 
+Email spoofing is a big threat to both individuals and organizations ([Yahoo breach](https://arstechnica.com/tech-policy/2017/03/fbi-hints-that-hack-of-semi-privileged-yahoo-employee-led-to-massive-breach/), [John podesta](https://www.cbsnews.com/news/the-phishing-email-that-hacked-the-account-of-john-podesta/)). To address this problem, modern email services and websites employ authentication protocols -- SPF, DKIM, and DMARC -- to prevent email forgery. 
 
-Our lastest research shows that the implementation of those protocols suffer a number of securiy issues, which can be exploited to bypass SPF/DKIM/DMARC protections. Figure 1 demostrates one of our spoofing attacks to bypass DKIM and DMARC in Gmail. For more technical details, please see our [Black Hat USA 2020 talk](https://www.blackhat.com/us-20/briefings/schedule/#you-have-no-idea-who-sent-that-email--attacks-on-email-sender-authentication-19902) or [USENIX security 2020 paper](https://www.usenix.org/system/files/sec20fall_chen-jianjun_prepub_0.pdf). 
+Our latest research shows that the implementation of those protocols suffers a number of security issues, which can be exploited to bypass SPF/DKIM/DMARC protections. Figure 1 demonstrates one of our spoofing attacks to bypass DKIM and DMARC in Gmail. For more technical details, please see our [Black Hat USA 2020 talk](https://www.blackhat.com/us-20/briefings/schedule/#you-have-no-idea-who-sent-that-email--attacks-on-email-sender-authentication-19902) or [USENIX security 2020 paper](https://www.usenix.org/system/files/sec20fall_chen-jianjun_prepub_0.pdf). 
 
-In this repo, we summarize all test cases we found and integrate them into this tool to help administrators and security-practioners quickly identify and locate such security issues.
+In this repo, we summarize all test cases we found and integrate them into this tool to help administrators and security-practitioners quickly identify and locate such security issues.
 
 ## Installation
 - Download this tool
@@ -30,7 +32,7 @@ sudo pip install -r requirements.txt
 > *Python version: Python 3 (**3.7.x**).*
 
 ## Usage
-espoofer has three work modes: *server* ('s', default mode), *client* ('c') and *manual* ('m'). In *server* mode, espoofer works as a mail server to test validation in receiving services. In *client* mode, espoofer works as a email client to test validation in sending services. *Manual* mode is used for debug purporse. 
+espoofer has three work modes: *server* ('s', default mode), *client* ('c') and *manual* ('m'). In *server* mode, espoofer works like a mail server to test validation in receiving services. In *client* mode, espoofer works as an email client to test validation in sending services. *Manual* mode is used for debug purposes. 
 
 <p align="center">
 <img src="images/email-authentication-flow.png" ><br>
@@ -38,18 +40,18 @@ Figure 2. Three types of attackers and their work modes
 </p>
 
 #### Server mode
-To run espoofer in server mode, you need to have: 1) a IP address (`1.2.3.4`), which port 25 is not blocked by the ISP, and 2) a domain (`attack.com`). 
+To run espoofer in server mode, you need to have: 1) an IP address (`1.2.3.4`), which port 25 is not blocked by the ISP, and 2) a domain (`attack.com`). 
 
 
 1. Domain configuration
 
-  - Set DKIM public key for `attack.com`
+- Set DKIM public key for `attack.com`
 
 ```
-selector._domainkey.attacker.com TXT  "v=DKIM1; k=rsa; t=y; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDNjwdrmp/gcbKLaGQfRZk+LJ6XOWuQXkAOa/lI1En4t4sLuWiKiL6hACqMrsKQ8XfgqN76mmx4CHWn2VqVewFh7QTvshGLywWwrAJZdQ4KTlfR/2EwAlrItndijOfr2tpZRgP0nTY6saktkhQdwrk3U0SZmG7U8L9IPj7ZwPKGvQIDAQAB"
+selector._domainkey.attacker.com TXT  "v=DKIM1; k=rsa; t=y; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDNjwdrmp/gcbKLaGQfRZk+LJ6XOWuQXkAOa/lI1En4t4sLuWiKiL6hACqMrsKQ8XfgqN76mmx4CHWn2VqVewFh7QTvshGLywWwrAJZdQ4KTlfR/2EwAlrItndijOfr2tpZRgP0nTY6saktkhQdwrk3U0SZmG7U8L9IPj7ZwPKGvQIDAQAB"
 ```
 
- - Set SPF record for `attack.com`
+- Set SPF record for `attack.com`
 
 ```
 _spf.attack.com TXT "v=spf1 ip4:1.2.3.4 ?all"
@@ -86,18 +88,17 @@ python3 espoofer.py -id server_a1
 
 #### Client mode 
 
-To run epsoofer in client mode, you need to have an account on the target email services. This attack exploit the failure of some email services to perform sufficient validation of emails received from local MUAs. An attacker can send emails with spoofed From headers. The exploited email providers may automatically attach DKIM signatures to their outgoing emails, enabling the attacker to impersonate other users of the email provider. For example, `attacker@gmail.com` try to impersonate `admin@gmail.com`. In some cases, cross-domain spoofing is also possible.
-
+To run epsoofer in client mode, you need to have an account on the target email services. This attack exploits the failure of some email services to perform sufficient validation of emails received from local MUAs. For example, `attacker@gmail.com` tries to impersonate `admin@gmail.com`. 
 1. Configure the tool in config.py
 
 ```
 config ={
-	"legitimate_site_address": b"admin@gmail.com",  
+	"legitimate_site_address": b"admin@gmail.com",  
 	"victim_address": b"victim@victim.com", 
 	"case_id": b"client_a1",
 
 	"client_mode": {
-		"sending_server": ("smtp.gmail.com", 587),  # SMTP sending serve ip and port
+		"sending_server": ("smtp.gmail.com", 587),  # SMTP sending serve ip and port
 		"username": b"attacker@gmail.com", # Your account username and password
 		"password": b"your_passward_here",
 	},
@@ -110,7 +111,7 @@ You can list find the case_id of all test cases using `-l` option:
 python3 espoofer.py -l
 ```
 
-> Note: `sending_server` should be the SMTP sending server address, not the receving server address.
+> Note: `sending_server` should be the SMTP sending server address, not the receiving server address.
 
 
 2. Run the tool to send a spoofing email
@@ -138,6 +139,7 @@ python espoofer.py -m m -helo attack.com -mfrom <m@attack.com> -rcptto <victim@v
 * Gmail.com DMARC bypass demo video, https://youtu.be/xuKZpT0rsd0
 * Outlook.com DMARC bypass video, https://youtu.be/IsWgAEbPaK0
 * Yahoo.com DMARC bypass video, https://youtu.be/DRepfStOruE
+* Protonmail.com, DMARC bypass video, https://youtu.be/bh4_SoPniMA
 * CVE-2020-12272, OpenDMARC bypass bug report, https://sourceforge.net/p/opendmarc/tickets/237/
 * CVE-2019-20790, OpenDMARC and pypolicyd-spf bypass bug report, https://sourceforge.net/p/opendmarc/tickets/235/
 
@@ -145,19 +147,19 @@ Welcome to send a pull request to file your bug report here.
 
 ## Q&A
 
-1. How do I know if the email has bypassed DMARC authentication succefully? 
+1. How do I know if the email has bypassed DMARC authentication successfully? 
 
-You can check it in the Authentication-results header in the raw message headers. If the headr shows `dmarc=pass`, it means the  email has passed the DMARC authentication.  You can check some demos video [here](https://www.youtube.com/playlist?list=PL--A-gWJV1dJ19SyhkzklMC3C8ra1kK5-).
+You can check it in the Authentication-results header in the raw message headers. If the header shows `dmarc=pass`, it means the email has passed the DMARC authentication.  You can check some demos video [here](https://www.youtube.com/playlist?list=PL--A-gWJV1dJ19SyhkzklMC3C8ra1kK5-).
 
 2. Why do emails fail to send?
 
-There are serveral posssible reasons if you fail to send a email: 1) your ISP blocks outgoing emails to port 25 to prevent spam. In this case, you need to ask for the permission from the ISP; 2) the IP address is in the spam list of the target email services. In many cases, you reslove the problem here, https://www.spamhaus.org/lookup/ ;  3) some email services check if there is a PTR record for the sending IP, you may also need to set the PTR record to bypass this check; 4) the email cannot pass the format validation of the target email service, you may want to try a different test case. 
+There are several possible reasons if you fail to send an email: 1) your ISP blocks outgoing emails to port 25 to prevent spam. In this case, you need to ask for permission from the ISP; 2) the IP address is in the spam list of the target email services. In many cases, you resolve the problem here, https://www.spamhaus.org/lookup/ ;  3) some email services check if there is a PTR record for the sending IP, you may also need to set the PTR record to bypass this check; 4) the email cannot pass the format validation of the target email service, you may want to try a different test case. 
 
-3. Why the email goes to spam folder? Anyway to avoid this?
+3. Why the email goes to the spam folder? Any way to avoid this?
 
-Currently espoofer focus on bypassing SPF/DKIM/DMARC authentication, and does't aim for spam filter bypass. But you could try to use a reputable sending IP address and benign message content to bypass the spam filter.
+Currently, espoofer focuses on bypassing SPF/DKIM/DMARC authentication and doesn't aim for spam filter bypass. But you could try to use a reputable sending IP address, domain, and benign message content to bypass the spam filter.
 
-4. Why I send an email successfully but the email didn't showup in either inbox or spam folder?
+4. Why I send an email successfully but the email didn't show up in either inbox or spam folder?
 
 In our prior experiences, some email services filter suspicious emails silently.
 
@@ -166,4 +168,4 @@ In our prior experiences, some email services filter suspicious emails silently.
 Welcome to add more test cases.
 
 <!-- *This repo is created for the vendors to reproduce our reported issues, so this tool is not useable without additional instructions. We will update it after the affected vendors have fixed our reported bugs.*
- -->
+ -->
