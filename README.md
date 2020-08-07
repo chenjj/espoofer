@@ -17,6 +17,10 @@ Email spoofing is a big threat to both individuals and organizations ([Yahoo bre
 
 Our latest research shows that the implementation of those protocols suffers a number of security issues, which can be exploited to bypass SPF/DKIM/DMARC protections. Figure 1 demonstrates one of our spoofing attacks to bypass DKIM and DMARC in Gmail. For more technical details, please see our [Black Hat USA 2020 talk](https://www.blackhat.com/us-20/briefings/schedule/#you-have-no-idea-who-sent-that-email--attacks-on-email-sender-authentication-19902) or [USENIX security 2020 paper](https://www.usenix.org/system/files/sec20fall_chen-jianjun_prepub_0.pdf). 
 
+- Black Hat USA 2020 slides (PDF): [You have No Idea Who Sent that Email: 18 Attacks on Email Sender Authentication](http://i.blackhat.com/USA-20/Thursday/us-20-Chen-You-Have-No-Idea-Who-Sent-That-Email-18-Attacks-On-Email-Sender-Authentication.pdf)
+- USENIX security 2020 paper (PDF): [Composition Kills:
+A Case Study of Email Sender Authentication](https://www.usenix.org/system/files/sec20fall_chen-jianjun_prepub_0.pdf)
+
 In this repo, we summarize all test cases we found and integrate them into this tool to help administrators and security-practitioners quickly identify and locate such security issues.
 
 ## Installation
