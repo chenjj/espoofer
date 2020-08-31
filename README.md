@@ -143,9 +143,10 @@ python espoofer.py -m m -helo attack.com -mfrom <m@attack.com> -rcptto <victim@v
 * Gmail.com DMARC bypass demo video, https://youtu.be/xuKZpT0rsd0
 * Outlook.com DMARC bypass video, https://youtu.be/IsWgAEbPaK0
 * Yahoo.com DMARC bypass video, https://youtu.be/DRepfStOruE
-* Protonmail.com, DMARC bypass video, https://youtu.be/bh4_SoPniMA
+* Protonmail.com DMARC bypass video, https://youtu.be/bh4_SoPniMA
 * CVE-2020-12272, OpenDMARC bypass bug report, https://sourceforge.net/p/opendmarc/tickets/237/
 * CVE-2019-20790, OpenDMARC and pypolicyd-spf bypass bug report, https://sourceforge.net/p/opendmarc/tickets/235/
+* Mail.ru DMARC bypass bug report on HackerOne, https://hackerone.com/reports/731878
 
 Welcome to send a pull request to file your bug report here. 
 
