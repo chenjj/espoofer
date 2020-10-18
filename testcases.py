@@ -101,7 +101,7 @@ test_cases = {
         "data": {
             "from_header": b"From: <admin@legitimate.com>\r\n",
             "to_header": b"To: <victim@victim.com>\r\n",
-            "subject_header": b"Subject: A6: routing address in mailfrom\r\n",
+            "subject_header": b"Subject: A7: routing address in mailfrom\r\n",
             "body": b"Hi, this is a test message! Best wishes.\r\n",
             "other_headers": b"Date: " + get_date() + b"\r\n" + b'Content-Type: text/plain; charset="UTF-8"\r\nMIME-Version: 1.0\r\nMessage-ID: <1538085644648.096e3d4e-bc38-4027-b57e-' + id_generator() + b'@message-ids.attack.com>\r\nX-Email-Client: https://github.com/chenjj/espoofer\r\n\r\n',
         },
@@ -149,7 +149,7 @@ test_cases = {
             "body": b"Hi, this is a test message! Best wishes.\r\n",
             "other_headers": b"Date: " + get_date() + b"\r\n" + b'Content-Type: text/plain; charset="UTF-8"\r\nMIME-Version: 1.0\r\nMessage-ID: <1538085644648.096e3d4e-bc38-4027-b57e-' + id_generator() + b'@message-ids.attack.com>\r\nX-Email-Client: https://github.com/chenjj/espoofer\r\n\r\n',
         },
-        "description": b"Multiple From headers with succeeding space, refer to section 6(c) in the paper."
+        "description": b"Multiple From headers with succeeding space, refer to Figure 6(c) in the paper."
     },
     "server_a11": {
         "helo": b"attack.com",
@@ -163,7 +163,7 @@ test_cases = {
             "body": b"Hi, this is a test message! Best wishes.\r\n",
             "other_headers": b"Date: " + get_date() + b"\r\n" + b'Content-Type: text/plain; charset="UTF-8"\r\nMIME-Version: 1.0\r\nMessage-ID: <1538085644648.096e3d4e-bc38-4027-b57e-' + id_generator() + b'@message-ids.attack.com>\r\nX-Email-Client: https://github.com/chenjj/espoofer\r\n\r\n',
         },
-        "description": b"Multiple From headers with folding line, refer to section Figure 6(b) in the paper."
+        "description": b"Multiple From headers with folding line, refer to Figure 6(b) in the paper."
     },
     "server_a12": {
         "helo": b"attack.com",
@@ -177,7 +177,7 @@ test_cases = {
             "body": b"Hi, this is a test message! Best wishes.\r\n",
             "other_headers": b"Date: " + get_date() + b"\r\n" + b'Sender: <admin@legitimate.com>\r\n' + b'Content-Type: text/plain; charset="UTF-8"\r\nMIME-Version: 1.0\r\nMessage-ID: <1538085644648.096e3d4e-bc38-4027-b57e-' + id_generator() + b'@message-ids.attack.com>\r\nX-Email-Client: https://github.com/chenjj/espoofer\r\n\r\n',
         },
-        "description": b"From and Sender header ambiguity, refer to section Figure 6(d) in the paper."
+        "description": b"From and Sender header ambiguity, refer to Figure 6(d) in the paper."
     },
     "server_a13": {
         "helo": b"attack.com",
@@ -257,7 +257,7 @@ test_cases = {
         "data": {
             "from_header": b"From: admin@legitimate.com,<second@attack.com>\r\n",
             "to_header": b"To: <victim@victim.com>\r\n",
-            "subject_header": b"Subject: P8: Specical characters precedence\r\n",
+            "subject_header": b"Subject: A18: Specical characters precedence\r\n",
             "body": b"Hi, this is a test message! Best wishes.\r\n",
             "other_headers": b"Date: " + get_date() + b"\r\n" + b'Sender: <s@sender.legitimate.com>\r\nContent-Type: text/plain; charset="UTF-8"\r\nMIME-Version: 1.0\r\nMessage-ID: <1538085644648.096e3d4e-bc38-4027-b57e-' + id_generator() + b'@message-ids.attack.com>\r\nX-Email-Client: https://github.com/chenjj/espoofer\r\n\r\n',
         },
@@ -292,7 +292,7 @@ test_cases = {
             "body": b"Hi, this is a test message! Best wishes.\r\n",
             "other_headers": b"Date: " + get_date() + b"\r\n" + b'Content-Type: text/plain; charset="UTF-8"\r\nMIME-Version: 1.0\r\nMessage-ID: <1538085644648.096e3d4e-bc38-4027-b57e-' + id_generator() + b'@message-ids.attack.com>\r\nX-Email-Client: https://github.com/chenjj/espoofer\r\n\r\n',
         },
-        "description": b"Spoofing via an email service account using multiple From headers, refer to Section 6.2 in the paper."
+        "description": b"Spoofing via an email service account using multiple From headers, refer to section 6.2 in the paper."
     },   
     "client_a2": {
         "helo": b"espoofer-MacBook-Pro.local",
@@ -306,7 +306,7 @@ test_cases = {
             "body": b"Hi, this is a test message! Best wishes.\r\n",
             "other_headers": b"Date: " + get_date() + b"\r\n" + b'Sender: <s@sender.legitimate.com>\r\nContent-Type: text/plain; charset="UTF-8"\r\nMIME-Version: 1.0\r\nMessage-ID: <1538085644648.096e3d4e-bc38-4027-b57e-' + id_generator() + b'@message-ids.attack.com>\r\nX-Email-Client: https://github.com/chenjj/espoofer\r\n\r\n',
         },
-        "description": b"Spoofing via an email service account using multiple address, refer to Section 6.2 in the paper."
+        "description": b"Spoofing via an email service account using multiple address, refer to section 6.2 in the paper."
     },
     "client_a3": {
         "helo": b"espoofer-MacBook-Pro.local",
@@ -320,6 +320,6 @@ test_cases = {
             "body": b"Hi, this is a test message! Best wishes.\r\n",
             "other_headers": b"Date: " + get_date() + b"\r\n" + b'Sender: <s@sender.legitimate.com>\r\nContent-Type: text/plain; charset="UTF-8"\r\nMIME-Version: 1.0\r\nMessage-ID: <1538085644648.096e3d4e-bc38-4027-b57e-' + id_generator() + b'@message-ids.attack.com>\r\nX-Email-Client: https://github.com/chenjj/espoofer\r\n\r\n',
         },
-        "description": b"Spoofing via an email service account, refer to Section 6.2 in the paper."
+        "description": b"Spoofing via an email service account, refer to section 6.2 in the paper."
     },
 }
