@@ -1,3 +1,4 @@
 colorama
 simplejson
 argparse
+dnspython
