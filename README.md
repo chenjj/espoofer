@@ -31,9 +31,9 @@ git clone https://github.com/chenjj/espoofer
 
 - Install dependencies
 ```
-sudo pip install -r requirements.txt
+sudo pip3 install -r requirements.txt
 ```
-> *Python version: Python 3 (**3.7.x**).*
+> *Python version: Python 3 (**>=3.7**).*
 
 ## Usage
 espoofer has three work modes: *server* ('s', default mode), *client* ('c') and *manual* ('m'). In *server* mode, espoofer works like a mail server to test validation in receiving services. In *client* mode, espoofer works as an email client to test validation in sending services. *Manual* mode is used for debug purposes. 
@@ -44,7 +44,7 @@ Figure 2. Three types of attackers and their work modes
 </p>
 
 #### Server mode
-To run espoofer in server mode, you need to have: 1) an IP address (`1.2.3.4`), which port 25 is not blocked by the ISP, and 2) a domain (`attack.com`). 
+To run espoofer in server mode, you need to have: 1) an IP address (`1.2.3.4`), which outgoing port 25 is not blocked by the ISP, and 2) a domain (`attack.com`). 
 
 
 1. Domain configuration
@@ -58,7 +58,7 @@ selector._domainkey.attacker.com TXT  "v=DKIM1; k=rsa; t=y; p=MIGfMA0GCSqGSIb3D
 - Set SPF record for `attack.com`
 
 ```
-_spf.attack.com TXT "v=spf1 ip4:1.2.3.4 ?all"
+attack.com TXT "v=spf1 ip4:1.2.3.4 +all"
 ```
 
 2. Configure the tool in config.py
@@ -135,7 +135,7 @@ python3 espoofer.py -m c -id client_a1
 Here is an example of manual mode:
 
 ```
-python espoofer.py -m m -helo attack.com -mfrom <m@attack.com> -rcptto <victim@victim.com> -data raw_msg_here -ip 127.0.0.1 -port 25
+python3 espoofer.py -m m -helo attack.com -mfrom <m@attack.com> -rcptto <victim@victim.com> -data raw_msg_here -ip 127.0.0.1 -port 25
 ```
 
 ## Bugs found with this tool
