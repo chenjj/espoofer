@@ -23,7 +23,7 @@ A Case Study of Email Sender Authentication](https://www.usenix.org/system/files
 
 In this repo, we summarize all test cases we found and integrate them into this tool to help administrators and security-practitioners quickly identify and locate such security issues.
 
-<details><summary>Please consider citing our paper if you do scentific research (Click me).  </summary>
+<details><summary>Please use the following citation if you do scentific research (Click me).  </summary>
 <p>
 
 *Latex version:*
@@ -164,6 +164,16 @@ Here is an example of manual mode:
 python3 espoofer.py -m m -helo attack.com -mfrom <m@attack.com> -rcptto <victim@victim.com> -data raw_msg_here -ip 127.0.0.1 -port 25
 ```
 
+### Screenshots
+
+1. A brief overview of test cases.
+
+<p align="center">
+<kbd>
+<img src="images/list_caseid.png">
+</kbd>
+</p>
+
 ## Bugs found with this tool
 
 * Gmail.com DMARC bypass demo video, https://youtu.be/xuKZpT0rsd0
@@ -197,6 +207,8 @@ In our prior experiences, some email services filter suspicious emails silently.
 ## Credits
 
 Welcome to add more test cases.
+
+
 
 <!-- *This repo is created for the vendors to reproduce our reported issues, so this tool is not useable without additional instructions. We will update it after the affected vendors have fixed our reported bugs.*
  -->
