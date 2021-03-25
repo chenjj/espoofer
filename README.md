@@ -15,13 +15,39 @@
 
 Email spoofing is a big threat to both individuals and organizations ([Yahoo breach](https://arstechnica.com/tech-policy/2017/03/fbi-hints-that-hack-of-semi-privileged-yahoo-employee-led-to-massive-breach/), [John podesta](https://www.cbsnews.com/news/the-phishing-email-that-hacked-the-account-of-john-podesta/)). To address this problem, modern email services and websites employ authentication protocols -- SPF, DKIM, and DMARC -- to prevent email forgery. 
 
-Our latest research shows that the implementation of those protocols suffers a number of security issues, which can be exploited to bypass SPF/DKIM/DMARC protections. Figure 1 demonstrates one of our spoofing attacks to bypass DKIM and DMARC in Gmail. For more technical details, please see our [Black Hat USA 2020 talk](https://www.blackhat.com/us-20/briefings/schedule/#you-have-no-idea-who-sent-that-email--attacks-on-email-sender-authentication-19902) or [USENIX security 2020 paper](https://www.usenix.org/system/files/sec20fall_chen-jianjun_prepub_0.pdf). 
+Our latest research shows that the implementation of those protocols suffers a number of security issues, which can be exploited to bypass SPF/DKIM/DMARC protections. Figure 1 demonstrates one of our spoofing attacks to bypass DKIM and DMARC in Gmail. For more technical details, please see our [Black Hat USA 2020 talk](https://www.blackhat.com/us-20/briefings/schedule/#you-have-no-idea-who-sent-that-email--attacks-on-email-sender-authentication-19902) or [USENIX security 2020 paper](https://www.jianjunchen.com/publication/composition-kills-a-case-study-of-email-sender-authentication/). 
 
 - Black Hat USA 2020 slides (PDF): [You have No Idea Who Sent that Email: 18 Attacks on Email Sender Authentication](http://i.blackhat.com/USA-20/Thursday/us-20-Chen-You-Have-No-Idea-Who-Sent-That-Email-18-Attacks-On-Email-Sender-Authentication.pdf)
 - USENIX security 2020 paper (PDF): [Composition Kills:
 A Case Study of Email Sender Authentication](https://www.usenix.org/system/files/sec20fall_chen-jianjun_prepub_0.pdf)
 
 In this repo, we summarize all test cases we found and integrate them into this tool to help administrators and security-practitioners quickly identify and locate such security issues.
+
+<details><summary>Please consider citing our paper if you do scentific research (Click me).  </summary>
+<p>
+
+*Latex version:*
+
+```tex
+@inproceedings{chen-email,
+author = {Jianjun Chen and Vern Paxson and Jian Jiang},
+title = {Composition Kills: A Case Study of Email Sender Authentication},
+booktitle = {29th {USENIX} Security Symposium ({USENIX} Security 20)},
+year = {2020},
+isbn = {978-1-939133-17-5},
+pages = {2183--2199},
+url = {https://www.usenix.org/conference/usenixsecurity20/presentation/chen-jianjun},
+publisher = {{USENIX} Association},
+month = aug,
+}
+```
+
+*Word version:*
+
+Jianjun Chen, Vern Paxson, and Jian Jiang. "Composition kills: A case study of email sender authentication." In 29th USENIX Security Symposium (USENIX Security 20), pp. 2183-2199. 2020.
+
+</p>
+</details>
 
 ## Installation
 - Download this tool
