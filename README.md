@@ -20,6 +20,7 @@ Our latest research shows that the implementation of those protocols suffers a n
 - Black Hat USA 2020 slides (PDF): [You have No Idea Who Sent that Email: 18 Attacks on Email Sender Authentication](http://i.blackhat.com/USA-20/Thursday/us-20-Chen-You-Have-No-Idea-Who-Sent-That-Email-18-Attacks-On-Email-Sender-Authentication.pdf)
 - USENIX security 2020 paper (PDF): [Composition Kills:
 A Case Study of Email Sender Authentication](https://www.usenix.org/system/files/sec20fall_chen-jianjun_prepub_0.pdf)
+    - [Distinguished Paper Award Winner](https://www.usenix.org/conference/usenixsecurity20/presentation/chen-jianjun)
 
 In this repo, we summarize all test cases we found and integrate them into this tool to help administrators and security-practitioners quickly identify and locate such security issues.
 
