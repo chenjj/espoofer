@@ -205,6 +205,10 @@ Currently, espoofer focuses on bypassing SPF/DKIM/DMARC authentication and doesn
 
 In our prior experiences, some email services filter suspicious emails silently.
 
+5. When testing server_a5/a6, why I cannot set specical characters like "(" in the domain?
+
+You will need to set up your own authority DNS server, rather than use third-party DNS hosting services,  as some DNS hosting services have restrictions on setting specical characters. See [issue](https://github.com/chenjj/espoofer/issues/2#issuecomment-686918954).
+
 ## Credits
 
 Welcome to add more test cases.
