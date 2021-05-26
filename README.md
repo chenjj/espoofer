@@ -15,13 +15,40 @@
 
 Email spoofing is a big threat to both individuals and organizations ([Yahoo breach](https://arstechnica.com/tech-policy/2017/03/fbi-hints-that-hack-of-semi-privileged-yahoo-employee-led-to-massive-breach/), [John podesta](https://www.cbsnews.com/news/the-phishing-email-that-hacked-the-account-of-john-podesta/)). To address this problem, modern email services and websites employ authentication protocols -- SPF, DKIM, and DMARC -- to prevent email forgery. 
 
-Our latest research shows that the implementation of those protocols suffers a number of security issues, which can be exploited to bypass SPF/DKIM/DMARC protections. Figure 1 demonstrates one of our spoofing attacks to bypass DKIM and DMARC in Gmail. For more technical details, please see our [Black Hat USA 2020 talk](https://www.blackhat.com/us-20/briefings/schedule/#you-have-no-idea-who-sent-that-email--attacks-on-email-sender-authentication-19902) or [USENIX security 2020 paper](https://www.usenix.org/system/files/sec20fall_chen-jianjun_prepub_0.pdf). 
+Our latest research shows that the implementation of those protocols suffers a number of security issues, which can be exploited to bypass SPF/DKIM/DMARC protections. Figure 1 demonstrates one of our spoofing attacks to bypass DKIM and DMARC in Gmail. For more technical details, please see our [Black Hat USA 2020 talk](https://www.blackhat.com/us-20/briefings/schedule/#you-have-no-idea-who-sent-that-email--attacks-on-email-sender-authentication-19902) or [USENIX security 2020 paper](https://www.jianjunchen.com/publication/composition-kills-a-case-study-of-email-sender-authentication/). 
 
 - Black Hat USA 2020 slides (PDF): [You have No Idea Who Sent that Email: 18 Attacks on Email Sender Authentication](http://i.blackhat.com/USA-20/Thursday/us-20-Chen-You-Have-No-Idea-Who-Sent-That-Email-18-Attacks-On-Email-Sender-Authentication.pdf)
 - USENIX security 2020 paper (PDF): [Composition Kills:
 A Case Study of Email Sender Authentication](https://www.usenix.org/system/files/sec20fall_chen-jianjun_prepub_0.pdf)
+    - [Distinguished Paper Award Winner](https://www.usenix.org/conference/usenixsecurity20/presentation/chen-jianjun)
 
 In this repo, we summarize all test cases we found and integrate them into this tool to help administrators and security-practitioners quickly identify and locate such security issues.
+
+<details><summary>Please use the following citation if you do scentific research (Click me).  </summary>
+<p>
+
+*Latex version:*
+
+```tex
+@inproceedings{chen-email,
+author = {Jianjun Chen and Vern Paxson and Jian Jiang},
+title = {Composition Kills: A Case Study of Email Sender Authentication},
+booktitle = {29th {USENIX} Security Symposium ({USENIX} Security 20)},
+year = {2020},
+isbn = {978-1-939133-17-5},
+pages = {2183--2199},
+url = {https://www.usenix.org/conference/usenixsecurity20/presentation/chen-jianjun},
+publisher = {{USENIX} Association},
+month = aug,
+}
+```
+
+*Word version:*
+
+Jianjun Chen, Vern Paxson, and Jian Jiang. "Composition kills: A case study of email sender authentication." In 29th USENIX Security Symposium (USENIX Security 20), pp. 2183-2199. 2020.
+
+</p>
+</details>
 
 ## Installation
 - Download this tool
@@ -138,6 +165,16 @@ Here is an example of manual mode:
 python3 espoofer.py -m m -helo attack.com -mfrom <m@attack.com> -rcptto <victim@victim.com> -data raw_msg_here -ip 127.0.0.1 -port 25
 ```
 
+### Screenshots
+
+1. A brief overview of test cases.
+
+<p align="center">
+<kbd>
+<img src="images/list_caseid.png">
+</kbd>
+</p>
+
 ## Bugs found with this tool
 
 * Gmail.com DMARC bypass demo video, https://youtu.be/xuKZpT0rsd0
@@ -168,9 +205,15 @@ Currently, espoofer focuses on bypassing SPF/DKIM/DMARC authentication and doesn
 
 In our prior experiences, some email services filter suspicious emails silently.
 
+5. When testing server_a5/a6, why I cannot set specical characters like "(" in the domain?
+
+You will need to set up your own authority DNS server, rather than use third-party DNS hosting services,  as some DNS hosting services have restrictions on setting specical characters. See [issue](https://github.com/chenjj/espoofer/issues/2#issuecomment-686918954).
+
 ## Credits
 
 Welcome to add more test cases.
+
+
 
 <!-- *This repo is created for the vendors to reproduce our reported issues, so this tool is not useable without additional instructions. We will update it after the affected vendors have fixed our reported bugs.*
  -->
