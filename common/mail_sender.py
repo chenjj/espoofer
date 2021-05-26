@@ -23,7 +23,7 @@ class MailSender(object):
 		self.client_socket = None
 		self.tls_socket = None
 
-	def set_param(self, mail_server, rcpt_to, email_data, helo, mail_from, starttls=False, mode = "server", username = None, password = None):
+	def set_param(self, mail_server, rcpt_to, email_data, helo, mail_from, starttls=False, mode = "server", username = None, password = None, auth_proto = "LOGIN"):
 		self.mail_server = mail_server
 		self.rcpt_to = rcpt_to
 		self.email_data = email_data
@@ -34,6 +34,7 @@ class MailSender(object):
 		self.mode = mode
 		self.username = username
 		self.password = password
+		self.auth_proto = auth_proto
 
 	def establish_socket(self):
 		client_socket = socket(AF_INET, SOCK_STREAM)
@@ -62,7 +63,7 @@ class MailSender(object):
 		recv_msg = self.print_recv_msg(client_socket)
 
 		if self.mode == "client":
-			if "LOGIN".lower() in recv_msg.lower():
+			if "LOGIN".lower() in recv_msg.lower() and self.auth_proto == "LOGIN":
 				auth_username = b"AUTH LOGIN " + base64.b64encode(self.username) + b"\r\n"
 				client_socket.send(auth_username)
 				self.print_send_msg(auth_username.decode("utf-8"))

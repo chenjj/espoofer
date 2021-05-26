@@ -151,7 +151,8 @@ def main():
 		msg_content = config["raw_email"] if config["raw_email"] else smtp_seqs["msg_content"]
 
 		mail_sender = MailSender()
-		mail_sender.set_param(mail_server, helo=b"espoofer-MacBook-Pro.local", mail_from= smtp_seqs['mailfrom'], rcpt_to=smtp_seqs["rcptto"], email_data=msg_content, starttls=True, mode="client", username=config["client_mode"]['username'], password=config["client_mode"]['password'])
+		auth_proto = config["client_mode"].get("auth_proto") if config["client_mode"].get("auth_proto") else "LOGIN"
+		mail_sender.set_param(mail_server, helo=b"espoofer-MacBook-Pro.local", mail_from= smtp_seqs['mailfrom'], rcpt_to=smtp_seqs["rcptto"], email_data=msg_content, starttls=True, mode="client", username=config["client_mode"]['username'], password=config["client_mode"]['password'], auth_proto = auth_proto)
 		mail_sender.send_email()
 
 	print("Finished.")
