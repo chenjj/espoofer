@@ -185,7 +185,7 @@ test_cases = {
         "rcptto": b"<victim@victim.com>",
         # "dkim_para": {"d":b"legitimate.com(.attack.com", "s":b"selector", "sign_header": b"From: <ceo@legitimate.com>"},
         "data": {
-            "from_header": b"From\r\n : <first@attack.com>\r\nn",
+            "from_header": b"From\r\n : <first@attack.com>\r\n",
             "to_header": b"To: <victim@victim.com>\r\n",
             "subject_header": b"Subject: A13: From and Resent-From header ambiguity\r\n",
             "body": b"Hi, this is a test message! Best wishes.\r\n",
